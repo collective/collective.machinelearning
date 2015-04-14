@@ -1,0 +1,45 @@
+<div class="MachineLearningItems"
+     i18n:domain="plone.app.learning"
+     id="AutoRelatedItemBox"
+              tal:define="plone_view nocall:context/@@plone;
+                          plone_layout nocall:context/@@plone_layout;
+                          normalizeString nocall:plone_view/normalizeString;
+                          context_state nocall:context/@@plone_context_state;
+                          site_properties context/portal_properties/site_properties;
+                          use_view_action site_properties/typesUseViewActionInListings|python:();">
+
+    <header>
+	Machine Learning
+    </header>
+
+		<div tal:define="cluster view/clustering">
+			<a href="autositemap#cluster${cluster/number}">Cluster <span tal:replace="cluster/number">15</span></a>: 
+			<span tal:content="cluster/topwords">Top, words, of, cluster</span>
+
+			<!-- plone/app/layout/viewlets/document_relateditems.pt -->
+	        <ul>
+	          <li tal:repeat="item cluster/elements">
+	            <span tal:define="desc                item/Description;
+	                              item_icon           python:plone_layout.getIcon(item);
+	                              item_type           item/portal_type;
+	                              item_type_class     python:'contenttype-' + normalizeString(item_type);
+	                              item_wf_state       item/review_state|python: context_state.workflow_state();
+	                              item_wf_state_class python: 'state-' + normalizeString(item_wf_state);
+	                              item_url            item/getURL|item/absolute_url;
+	                              item_url            python:(item_type in use_view_action) and item_url+'/view' or item_url"
+	                  tal:attributes="class item_type_class">
+	              <img tal:replace="structure item_icon/html_tag" />
+	              <a href="" class=""
+	                 tal:attributes="href  item_url;
+	                                 title desc;
+	                                 class string:$item_wf_state_class"
+	                 tal:content="item/pretty_title_or_id">
+	                  Related Item
+	              </a>
+	            </span>
+	          </li>
+			</ul>
+		</div>
+
+
+</div>

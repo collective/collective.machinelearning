@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="plone.app.learning">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+    <plone:behavior
+        title="MachineLearning"
+        description="Content suitable for machine learning"
+        provides=".behaviors.IMachineLearning"
+	for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
+
+    <!-- Adapters for basic types -->
+    <adapter factory=".adapters.ContentLearningString" />
+    <adapter factory=".adapters.ContentLearningUpdate" />
+
+
+
+</configure>

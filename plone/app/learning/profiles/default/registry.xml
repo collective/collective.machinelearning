@@ -1,0 +1,19 @@
+
+<registry>
+    <records interface="plone.app.learning.settings.ISettings" prefix="plone.app.learning.settings.ISettings">
+
+        <!-- Set default values -->
+        <value key="modelsDir">var/instance/</value>
+        
+        <!-- Set default values for Vectorizer -->
+        <!-- <value key="useTfidf">False</value> -->
+        <value key="useNltk">False</value>
+        <value key="useRemembering">False</value>
+        <value key="stopWords">english</value>
+        <value key="ngramRangeMin">1</value>
+        <value key="ngramRangeMax">2</value>      
+        <value key="nClusters">50</value>     
+        <value key="clustersTerms">{}</value> 
+        <value key="clusteringFile">model-clustering.pck</value>   
+    </records>
+</registry>

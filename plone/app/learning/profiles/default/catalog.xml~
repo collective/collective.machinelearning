@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+
+  <!-- Cluster group: int -->
+  <index name="tagFollowers" meta_type="FieldIndex">
+    <indexed_attr value="tagFollowers"/>
+  </index>
+  <column value="machineLearningCluster"/>
+<index name="MachineLearning-ClusterGroup" meta_type="FieldIndex">
+  <indexed_attr value="MachineLearning-ClusterGroup"/>
+</index>
+<column value="MachineLearning-ClusterGroup"/>
+
+
+</object>

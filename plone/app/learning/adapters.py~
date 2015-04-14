@@ -1,0 +1,108 @@
+from zope.interface import implements
+from zope.component import adapts, adapter
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent, IObjectAddedEvent
+from plone.dexterity.interfaces import IDexterityContent
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from plone.registry.interfaces import IRegistry
+from plone.app.uuid.utils import uuidToCatalogBrain
+
+
+from plone.app.learning.interfaces import ILearningString, IModel, IPredict
+from plone.app.learning.machinelearning.computations import Predict, Model
+from plone.app.learning.behaviors import IMachineLearning
+
+
+
+#adapters for Model computations
+class MachineLearningModel(Model):
+    """
+    Computes predicts for objects with IMachineLearning 
+
+    :iparam context: The MachineLearning object
+    :iparam schema: Is the schema with model fields
+    """
+    implements(IModel)
+    adapts(IPloneSiteRoot)
+
+    def __init__(self, context):
+        self.context = context
+        registry = getUtility(IRegistry)
+        self.schema = registry.forInterface(ISettings)
+
+class MachineLearningPredict(Predict):
+    """
+    Computes predicts for objects with IMachineLearning 
+
+    :iparam context: The MachineLearning object
+    :iparam schema: Is the schema with model fields
+    """
+    implements(IPredict)
+    adapts(IMachineLearning)
+
+    def __init__(self, context):
+        self.context = context
+        registry = getUtility(IRegistry)
+        self.schema = registry.forInterface(ISettings)
+
+        
+#Adapters for IMachineLearning behavior
+@adapter(IMachineLearning, IObjectModifiedEvent)
+def modifiedMachineLearning(context, event):
+    IPredict(context).compute_predict()
+
+
+#Example adapters for IlearningString    
+class ContentLearningString(object):
+    """
+    Adapter for Dexterity Content objects to interface ILearningString
+    """
+    implements(ILearningString)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    def learningString(self):
+        #text contained in SearcheableText
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brain = uuidToCatalogBrain(self.context.UID())
+        rid = brain.getRID()
+        data = catalog.getIndexDataForRID(rid)        
+        return data['SearchableText']
+
+
+    def learningTags(self):
+        tags = self.context.subject
+        if tags:      
+            return tags
+        return ('unknown',)
+
+
+    def setClusterGroup(self,group):
+        self.context.machineLearningCluster = group
+        self.context.reindexObject(idxs=["MachineLearning-ClusterGroup"])
+
+    def getClusterGroup(self):
+        return self.context.machineLearningCluster
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
