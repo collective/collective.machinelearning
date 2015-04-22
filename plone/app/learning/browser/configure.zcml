@@ -2,7 +2,9 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser">
 
-    <!-- Computing actions -->
+  <include package="Products.CMFCore" file="permissions.zcml" />
+  
+  <!-- Computing actions -->
     <browser:page
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         name="computeMachineLearning"
