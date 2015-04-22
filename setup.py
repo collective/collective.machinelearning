@@ -36,7 +36,7 @@ setup(name='plone.app.learning',
           # -*- machine learning -*-
           #'numpy',##Must be installed externally
 	        'scikit-learn',
-          'scipy', ##Needs gfortran 
+#          'scipy', ##Needs gfortran 
 	        'nltk',
       ],
       entry_points="""
