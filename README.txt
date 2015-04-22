@@ -15,6 +15,13 @@ Installation
 3. Run bin/buildout: scipy, nltk and scikit-learn will be installed.
 
 
+Alternatively, you can use the provided docker development environment:
+- make docker-build
+- make docker-run
+- make
+- bin/instance fg
+
+
 
 
 Quick Doc
