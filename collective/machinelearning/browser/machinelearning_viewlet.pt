@@ -1,5 +1,5 @@
 <div class="MachineLearningItems"
-     i18n:domain="plone.app.learning"
+     i18n:domain="collective.machinelearning"
      id="AutoRelatedItemBox"
               tal:define="plone_view nocall:context/@@plone;
                           plone_layout nocall:context/@@plone_layout;

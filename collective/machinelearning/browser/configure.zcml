@@ -20,14 +20,14 @@
         />
 
     <browser:page
-        for="plone.app.learning.behaviors.IMachineLearning"
+        for="collective.machinelearning.behaviors.IMachineLearning"
         name="test_predict"
         class=".computations.TestPredictView"
         permission="zope2.View"
         />
 
     <browser:page
-        for="plone.app.learning.behaviors.IMachineLearning"
+        for="collective.machinelearning.behaviors.IMachineLearning"
         name="compute_predict"
         class=".computations.ComputePredictView"
         permission="cmf.ManagePortal"
@@ -46,11 +46,11 @@
       />
 
     <browser:viewlet
-        name="plone.app.learning.learnedItems"
+        name="collective.machinelearning.learnedItems"
         manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
         class=".autositemap.AutoLearnedViewlet"
         template="machinelearning_viewlet.pt"
-        for="plone.app.learning.behaviors.IMachineLearning"
+        for="collective.machinelearning.behaviors.IMachineLearning"
         permission="zope2.View"
         />
 

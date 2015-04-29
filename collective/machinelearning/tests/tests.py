@@ -2,7 +2,7 @@ import unittest
 
 from sklearn.feature_extraction.text import HashingVectorizer
 
-from plone.app.learning.vectorizer import Vectorizer
+from collective.machinelearning.vectorizer import Vectorizer
 
 
 

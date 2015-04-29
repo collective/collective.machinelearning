@@ -2,10 +2,10 @@ from Products.CMFCore.utils import getToolByName
 from zope.component import getAdapter
 from zope.component.interfaces import ComponentLookupError
 
-from plone.app.learning.behaviors import IMachineLearning
-from plone.app.learning.interfaces import ILearningString
-from plone.app.learning.utils.base import CatalogEmpty
-from plone.app.learning.utils import vectorizers
+from collective.machinelearning.behaviors import IMachineLearning
+from collective.machinelearning.interfaces import ILearningString
+from collective.machinelearning.utils.base import CatalogEmpty
+from collective.machinelearning.utils import vectorizers
 
 
 class Vectorizer(object):
@@ -14,7 +14,7 @@ class Vectorizer(object):
     Computes vectorizer for objects with IVectorizer schema
 
     :iparam context: Any object (for obtaining portal_catalog, etc.)
-    :iparam schema: A plone.app.learning.settings.ISettings registry proxy
+    :iparam schema: A collective.machinelearning.settings.ISettings registry proxy
     :iparam learned_objs: The list of objects learned (by order of learning)
     :iparam vectorizer: The Bag-of-words dictionary of strs2ints
     :iparam corpus: The Bag-of-words for samples

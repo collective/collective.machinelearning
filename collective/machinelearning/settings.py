@@ -7,8 +7,8 @@ from z3c.form import form, group, field, button
 
 # import cProfile
 
-from plone.app.learning.interfaces import ILearningModel
-from plone.app.learning import _
+from collective.machinelearning.interfaces import ILearningModel
+from collective.machinelearning import _
 
 
 class ISettingsDefault(Interface):

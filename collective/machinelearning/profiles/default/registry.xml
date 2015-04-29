@@ -1,6 +1,6 @@
 
 <registry>
-    <records interface="plone.app.learning.settings.ISettings" prefix="plone.app.learning.settings.ISettings">
+    <records interface="collective.machinelearning.settings.ISettings" prefix="collective.machinelearning.settings.ISettings">
 
         <!-- Set default values -->
         <value key="modelsDir">var/instance/</value>

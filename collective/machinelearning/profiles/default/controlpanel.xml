@@ -2,12 +2,12 @@
 <object
     name="portal_controlpanel"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="plone.app.learning">
+    i18n:domain="collective.machinelearning">
 
     <configlet
         title="Machine learning Settings"
-        action_id="plone.app.learning.settings"
-        appId="plone.app.learning"
+        action_id="collective.machinelearning.settings"
+        appId="collective.machinelearning"
         category="Products"
         condition_expr=""
         url_expr="string:${portal_url}/@@machinelearning-controlpanel"

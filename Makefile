@@ -1,4 +1,4 @@
-PROJECT=plone.app.learning
+PROJECT=collective.machinelearning
 
 default: devel
 

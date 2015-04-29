@@ -1,11 +1,11 @@
 from Products.CMFCore.utils import getToolByName
-from plone.app.learning.behaviors import IMachineLearning
-from plone.app.learning.interfaces import ILearningString, ILearningUpdate
-from plone.app.learning.utils.base import CatalogEmpty
-from plone.app.learning.utils.persistence import save_model
-from plone.app.learning.utils.persistence import load_model
-from plone.app.learning.utils.vectorizers import nearers
-from plone.app.learning.utils.clustering import (
+from collective.machinelearning.behaviors import IMachineLearning
+from collective.machinelearning.interfaces import ILearningString, ILearningUpdate
+from collective.machinelearning.utils.base import CatalogEmpty
+from collective.machinelearning.utils.persistence import save_model
+from collective.machinelearning.utils.persistence import load_model
+from collective.machinelearning.utils.vectorizers import nearers
+from collective.machinelearning.utils.clustering import (
     clustering_model, clustering_top_terms)
 
 

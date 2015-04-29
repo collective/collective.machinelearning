@@ -6,13 +6,13 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from plone.registry.interfaces import IRegistry
 from plone.app.uuid.utils import uuidToCatalogBrain
 
-from plone.app.learning.interfaces import (
+from collective.machinelearning.interfaces import (
     ILearningString, ILearningUpdate,
     ILearningModel, IPredictModel
 )
-from plone.app.learning.computations import Predict, Learning
-from plone.app.learning.behaviors import IMachineLearning
-from plone.app.learning.settings import ISettings
+from collective.machinelearning.computations import Predict, Learning
+from collective.machinelearning.behaviors import IMachineLearning
+from collective.machinelearning.settings import ISettings
 
 
 # adapters for Model computations

@@ -1,5 +1,5 @@
 from Products.Five import BrowserView
-from plone.app.learning.interfaces import ILearningModel, IPredictModel
+from collective.machinelearning.interfaces import ILearningModel, IPredictModel
 
 
 class ComputeView(BrowserView):

@@ -1,16 +1,16 @@
-plone.app.learning Installation
+collective.machinelearning Installation
 -------------------------
 
-To install plone.app.learning using zc.buildout and the plone.recipe.zope2instance
+To install collective.machinelearning using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
-* Add ``plone.app.learning`` to the list of eggs to install, e.g.:
+* Add ``collective.machinelearning`` to the list of eggs to install, e.g.:
 
     [buildout]
     ...
     eggs =
         ...
-        plone.app.learning
+        collective.machinelearning
        
 * Re-run buildout, e.g. with:
 

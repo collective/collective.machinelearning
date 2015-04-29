@@ -6,7 +6,7 @@ from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from zope.interface import alsoProvides
 
-from plone.app.learning import _
+from collective.machinelearning import _
 
 
 class IMachineLearning(model.Schema):

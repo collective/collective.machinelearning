@@ -1,9 +1,9 @@
 import os.path
 
-from plone.app.learning.vectorizer import Vectorizer
-from plone.app.learning.clustering import Clustering
-from plone.app.learning.utils.base import CatalogEmpty
-from plone.app.learning.interfaces import ILearningString
+from collective.machinelearning.vectorizer import Vectorizer
+from collective.machinelearning.clustering import Clustering
+from collective.machinelearning.utils.base import CatalogEmpty
+from collective.machinelearning.interfaces import ILearningString
 
 
 MODELS = [Clustering, ]

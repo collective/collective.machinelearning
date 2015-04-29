@@ -3,8 +3,8 @@ from plone.app.layout.viewlets.common import ViewletBase
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
-from plone.app.learning.settings import ISettings
-from plone.app.learning.interfaces import ILearningUpdate
+from collective.machinelearning.settings import ISettings
+from collective.machinelearning.interfaces import ILearningUpdate
 
 
 

@@ -4,7 +4,7 @@ import os
 version = '1.0.dev0'
 
 setup(
-    name='plone.app.learning',
+    name='collective.machinelearning',
     version=version,
     description="Machine learning tools",
     long_description=open("README.txt").read() + "\n" +
@@ -19,10 +19,10 @@ setup(
     keywords='plone',
     author='Ramon Navarro Bosch',
     author_email='',
-    url='https://github.com/plone/plone.app.learning',
+    url='https://github.com/collective/collective.machinelearning',
     license='GPL',
     packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['plone', 'plone.app'],
+    namespace_packages=['collective'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[

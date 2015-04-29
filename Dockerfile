@@ -9,5 +9,5 @@ run locale-gen nl_NL.UTF-8 nl_NL
 
 run useradd -m -d /app app && echo "app:app" | chpasswd && adduser app sudo
 run ln -s /usr/include/freetype2/ /usr/include/freetype
-run echo plone.app.learning > /etc/debian_chroot
+run echo collective.machinelearning > /etc/debian_chroot
 cmd ["/bin/bash"]
