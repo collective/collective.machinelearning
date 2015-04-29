@@ -10,18 +10,19 @@ from plone.app.learning import _
 
 
 class IMachineLearning(model.Schema):
+
     """
-    Behavior interface to make a Dexterity type support Machine Learning 
+    Behavior interface to make a Dexterity type support Machine Learning
     """
     model.fieldset('machinelearning',
-            label=_(u"Learning"),
-            fields=['machineLearningCluster',]
-        )
-    
+                   label=_(u"Learning"),
+                   fields=['machineLearningCluster', ]
+                   )
+
     machineLearningCluster = schema.Int(
         title=_(u'label_machine_learning_cluster', default=u'Related cluster'),
         required=False,
-        )
+    )
 
-   
+
 alsoProvides(IMachineLearning, IFormFieldProvider)

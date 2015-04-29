@@ -1,10 +1,14 @@
 from zope.interface import Interface
 
 # Machine learning interfaces
+
+
 class ILearningString(Interface):
+
     """
     Interface for objects providing a string for machine learning
     """
+
     def learningString(self):
         """
         Returns a string.
@@ -19,23 +23,25 @@ class ILearningString(Interface):
 
 
 class ILearningUpdate(Interface):
+
     """
     Interface for objects updatable with learning results
-    """    
-    def setClusterGroup(self,group):
+    """
+
+    def setClusterGroup(self, group):
         pass
+
     def getClusterGroup(self):
         pass
 
 
-
-
-
 # Model computations interfaces
 class ILearningModel(Interface):
+
     """
     Interface for objects providing a Machine Learning model learning
     """
+
     def compute(self):
         """
         Compute the model
@@ -44,9 +50,11 @@ class ILearningModel(Interface):
 
 
 class IPredictModel(Interface):
+
     """
     Interface for objects providing a Machine Learning model prediction
-    """ 
+    """
+
     def test_predict(self):
         """
         Returns a test prediction
@@ -58,4 +66,3 @@ class IPredictModel(Interface):
         Returns a test prediction
         """
         pass
-
