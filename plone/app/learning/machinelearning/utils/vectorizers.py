@@ -1,7 +1,5 @@
-
-
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, HashingVectorizer
-import nltk.stem 
+from sklearn.feature_extraction.text import HashingVectorizer
+import nltk.stem
 import scipy.linalg
 
 from sklearn.feature_extraction.hashing import FeatureHasher
@@ -9,58 +7,47 @@ from sklearn.feature_extraction import _hashing
 import scipy.sparse as sp
 
 
-
-
-def new_hashing_vectorizer(
-		stop_words=None,ngram_range=(1,1),
-		nltk=False, remembering=False):
-
-	vecttype = HashingVectorizer
-
-	if remembering:
-		vecttype = VectorizerRemembering
-
-	if nltk:
-		vecttype = nltk_stemming(vecttype)
-
-	return vecttype(
-			stop_words=stop_words,ngram_range=ngram_range
-			)
-
+def new_hashing_vectorizer(stop_words=None,
+                           ngram_range=(1, 1),
+                           nltk=False,
+                           remembering=False):
+    vecttype = HashingVectorizer
+    if remembering:
+        vecttype = VectorizerRemembering
+    if nltk:
+        vecttype = nltk_stemming(vecttype)
+    return vecttype(stop_words=stop_words,
+                    ngram_range=ngram_range)
 
 
 def nltk_stemming(vectorizer_type):
+    english_stemmer = nltk.stem.SnowballStemmer('english')
 
-	english_stemmer = nltk.stem.SnowballStemmer('english')
+    class StemmedVectorizer(vectorizer_type):
 
-	class StemmedVectorizer(vectorizer_type):
-		def build_analyzer(self):
-			analyser = super(StemmedVectorizer,self).build_analyzer()
-			return lambda doc: (english_stemmer.stem(w) for w in analyser(doc))
+        def build_analyzer(self):
+            analyser = super(StemmedVectorizer, self).build_analyzer()
+            return lambda doc: (english_stemmer.stem(w) for w in analyser(doc))
 
-	return StemmedVectorizer
-
+    return StemmedVectorizer
 
 
 def nearers(vector, corpus):
-	"""
-	Return the distance for each of corpus to vector
-	"""
-	dists = []
-	for i in range(corpus.shape[0]):
-		dist = scipy.linalg.norm((vector - corpus[i]).toarray())
-		dists.append((dist , i) )
+    """
+    Return the distance for each of corpus to vector
+    """
+    dists = []
+    for i in range(corpus.shape[0]):
+        dist = scipy.linalg.norm((vector - corpus[i]).toarray())
+        dists.append((dist, i))
 
-	return dists
-
-
+    return dists
 
 
-
-
-#Modifying scikit-learn
+# Modifying scikit-learn
 
 class HasherRemembering(FeatureHasher):
+
     def transform(self, raw_X, y=None):
         raw_X = iter(raw_X)
         if self.input_type == "dict":
@@ -80,47 +67,45 @@ class HasherRemembering(FeatureHasher):
         if self.non_negative:
             np.abs(X.data, X.data)
 
-        #ADDING: PERSIST VALUES!
+        # ADDING: PERSIST VALUES!
         self._indicespersisted = indices
 
         return X
 
 
-
 class VectorizerRemembering(HashingVectorizer):
 
     def _get_hasher(self):
-        #ADDING: PERSIST HASHER!
-        self._hasherpersisted = HasherRemembering(n_features=self.n_features,
-                             input_type='string', dtype=self.dtype,
-                             non_negative=self.non_negative)
+        # ADDING: PERSIST HASHER!
+        self._hasherpersisted = HasherRemembering(
+            n_features=self.n_features,
+            input_type='string',
+            dtype=self.dtype,
+            non_negative=self.non_negative)
         return self._hasherpersisted
 
     def build_analyzer(self):
-    	analyser = super(VectorizerRemembering,self).build_analyzer()
+        analyser = super(VectorizerRemembering, self).build_analyzer()
 
-    	#ADDING: PERSIST STRINGS!
-    	self._stringspersisted = []
+        # ADDING: PERSIST STRINGS!
+        self._stringspersisted = []
 
-    	def analyserremembering(doc):
-    		analysed = analyser(doc)
-    		self._stringspersisted += analysed
-    		return analysed
+        def analyserremembering(doc):
+            analysed = analyser(doc)
+            self._stringspersisted += analysed
+            return analysed
 
         return analyserremembering
 
-
-    def get_feature_name(self,hashedfeature):
-    	try:
-        	idx = self._hasherpersisted._indicespersisted.tolist().index(hashedfeature)
-	        return self._stringspersisted[idx]
+    def get_feature_name(self, hashedfeature):
+        try:
+            idx = self._hasherpersisted._indicespersisted.tolist().index(
+                hashedfeature)
+            return self._stringspersisted[idx]
         except ValueError:
-        	return u'unknown'
+            return u'unknown'
 
     def get_feature_names(self):
-        return { hashing: string for hashing,string in zip(
-                self._hasherpersisted._indicespersisted,
-                self._stringspersisted) } 
-
-
-
+        return {hashing: string for hashing, string in zip(
+            self._hasherpersisted._indicespersisted,
+            self._stringspersisted)}
