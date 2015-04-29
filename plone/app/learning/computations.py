@@ -1,8 +1,8 @@
 import os.path
 
-from plone.app.learning.machinelearning.vectorizer import Vectorizer
-from plone.app.learning.machinelearning.clustering import Clustering
-from plone.app.learning.machinelearning.utils.base import CatalogEmpty
+from plone.app.learning.vectorizer import Vectorizer
+from plone.app.learning.clustering import Clustering
+from plone.app.learning.utils.base import CatalogEmpty
 from plone.app.learning.interfaces import ILearningString
 
 

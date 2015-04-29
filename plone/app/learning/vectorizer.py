@@ -4,8 +4,8 @@ from zope.component.interfaces import ComponentLookupError
 
 from plone.app.learning.behaviors import IMachineLearning
 from plone.app.learning.interfaces import ILearningString
-from plone.app.learning.machinelearning.utils.base import CatalogEmpty
-from plone.app.learning.machinelearning.utils import vectorizers
+from plone.app.learning.utils.base import CatalogEmpty
+from plone.app.learning.utils import vectorizers
 
 
 class Vectorizer(object):

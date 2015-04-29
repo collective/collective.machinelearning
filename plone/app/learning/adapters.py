@@ -10,7 +10,7 @@ from plone.app.learning.interfaces import (
     ILearningString, ILearningUpdate,
     ILearningModel, IPredictModel
 )
-from plone.app.learning.machinelearning.computations import Predict, Learning
+from plone.app.learning.computations import Predict, Learning
 from plone.app.learning.behaviors import IMachineLearning
 from plone.app.learning.settings import ISettings
 
