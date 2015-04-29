@@ -1,8 +1,10 @@
 from sklearn.feature_extraction.text import HashingVectorizer
 import nltk.stem
+import numpy as np
 import scipy.linalg
 
 from sklearn.feature_extraction.hashing import FeatureHasher
+from sklearn.feature_extraction.hashing import _iteritems
 from sklearn.feature_extraction import _hashing
 import scipy.sparse as sp
 
