@@ -29,25 +29,6 @@ def new_hashing_vectorizer(
 
 
 
-def new_vectorizer(
-		dictionary=None, stop_words=None,ngram_range=(1,1),
-		tfidf=False, nltk=False):
-
-	vecttype = CountVectorizer
-
-	if tfidf:
-		vecttype = TfidfVectorizer
-
-
-	if nltk:
-		vecttype = nltk_stemming(vecttype)
-
-	return vecttype(
-			vocabulary=dictionary, stop_words=stop_words,ngram_range=ngram_range
-			)
-
-
-
 def nltk_stemming(vectorizer_type):
 
 	english_stemmer = nltk.stem.SnowballStemmer('english')
@@ -58,17 +39,6 @@ def nltk_stemming(vectorizer_type):
 			return lambda doc: (english_stemmer.stem(w) for w in analyser(doc))
 
 	return StemmedVectorizer
-
-
-
-def vectorizer_fit(vectorizer, samples):
-	"""
-	Return a corpus. A corpus is an array of nsamples X nfeatures. Features are the bag-of-words. 
-	"""
-	return vectorizer.fit_transform(samples) 
-
-def vectorizer_transform(vectorizer, samples):
-	return vectorizer.transform(samples) 
 
 
 

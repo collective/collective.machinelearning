@@ -14,13 +14,6 @@ def clustering_model(corpus,n_clusters=50):
 	return km
 
 
-
-def clustering_prediction(model,corpus):
-	predicted = model.predict(corpus)
-
-	return predicted
-
-
 def clustering_top_terms(model,vectorizer):
 	"""
 	Top terms per cluster
