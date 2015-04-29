@@ -55,3 +55,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# buildout
+*~
+bin/
+include/
+local/
+
+# docker
+.ssh/

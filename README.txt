@@ -10,9 +10,16 @@ Installation
 
 1. gfortran is needed, install it into system.
 
-2. Install numpy manually. With pip as with easy_install fails.
+2. Install numpy and scipy manually. See http://scikit-learn.org/stable/install.html.
 
-3. Run bin/buildout: scipy, nltk and scikit-learn will be installed.
+3. Run bin/buildout: nltk and scikit-learn will be installed.
+
+
+Alternatively, you can use the provided docker development environment:
+- make docker-build
+- make docker-run
+- make
+- bin/instance fg
 
 
 
