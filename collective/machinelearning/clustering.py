@@ -1,6 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from collective.machinelearning.behaviors import IMachineLearning
-from collective.machinelearning.interfaces import ILearningString, ILearningUpdate
+from collective.machinelearning.interfaces import (
+    ILearningString, ILearningUpdate)
 from collective.machinelearning.utils.base import CatalogEmpty
 from collective.machinelearning.utils.persistence import save_model
 from collective.machinelearning.utils.persistence import load_model

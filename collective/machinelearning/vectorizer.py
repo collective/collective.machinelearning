@@ -18,7 +18,7 @@ class Vectorizer(object):
     :iparam learned_objs: The list of objects learned (by order of learning)
     :iparam vectorizer: The Bag-of-words dictionary of strs2ints
     :iparam corpus: The Bag-of-words for samples
-    """
+    """  # noqa
 
     def __init__(self, context, schema):
         self.context = context
